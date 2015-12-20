@@ -37,6 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # customize VM
       server.vm.hostname = "scapl-#{hostname}"
       config.vm.provider :vmware_workstation do |vmware|
+        vmware.gui = true
         vmware.vmx["name"] = "scapl-#{hostname}"
         vmware.vmx["displayName"] = "scapl-#{hostname}"
         case hostname
