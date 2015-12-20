@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vmwarefusion.box"
 
   servers.each do |hostname|
-    config.vm.define "SCAPL/#{hostname}" do |server|
+    config.vm.define "scapl-#{hostname}" do |server|
       # networking
       case hostname
       when "backbone"
@@ -38,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       server.vm.hostname = "scapl-#{hostname}"
       config.vm.provider :vmware_workstation do |vmware|
         vmware.vmx["name"] = "scapl-#{hostname}"
+        vmware.vmx["displayName"] = "scapl-#{hostname}"
         case hostname
         when "backbone" # give a bit more capability to backbone (supporting RabbitMQ and the FTP server)
           vmware.vmx["memsize"] = 1024
@@ -47,6 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           vmware.vmx["numvcpus"] = 1
         end
         vmware.vmx["usb.present"] = false # disable USB controller
+        vmware.vmx["usb.vbluetooth.startConnected"] = false # disable BlueTooth
       end
 
       # baseline provisioning
