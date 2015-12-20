@@ -1,19 +1,23 @@
 ---
-# Install basic packages
-
-- name: Packages - Install Git
+- name: Install Git
   apt:
     pkg: git
     state: latest
 
-- name: Packages - Install Python-Pip # required for installing supervisor
+- name: Install Python stuffs
   apt:
-    pkg: python-pip
+    pkg: {{item}}
+    state: latest
+  with_items:
+    - python-dev
+    - python-pip
+
+- name: Install FTP-SSL
+  apt:
+    pkg: ftp-ssl
     state: latest
 
-# Install specific packages
-
-- name: Packages - Install OpenSCAP library
+- name: Install OpenSCAP library
   apt:
     pkg: libopenscap8
     state: latest
