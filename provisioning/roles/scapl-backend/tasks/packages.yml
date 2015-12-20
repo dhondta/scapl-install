@@ -6,7 +6,7 @@
 
 - name: Install Python stuffs
   apt:
-    pkg: {{item}}
+    pkg: "{{ item }}"
     state: latest
   with_items:
     - python-dev

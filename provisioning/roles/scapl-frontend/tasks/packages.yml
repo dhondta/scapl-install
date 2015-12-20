@@ -6,11 +6,13 @@
 
 - name: Install Python stuffs
   apt:
-    pkg: {{item}}
+    pkg: "{{ item }}"
     state: latest
   with_items:
     - python-dev
     - python-pip
+    - python-django
+    - python-django-celery
 
 - name: Install FTP-SSL
   apt:
