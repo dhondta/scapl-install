@@ -1,0 +1,28 @@
+---
+- name: Install Git
+  apt:
+    pkg: git
+    state: latest
+
+- name: Install Python stuffs
+  apt:
+    pkg: {{item}}
+    state: latest
+  with_items:
+    - python-dev
+    - python-pip
+
+- name: Install Vagrant
+  apt:
+    pkg: vagrant
+    state: latest
+
+- name: Install FTP-SSL
+  apt:
+    pkg: ftp-ssl
+    state: latest
+
+- name: Install OpenSCAP library
+  apt:
+    pkg: libopenscap8
+    state: latest

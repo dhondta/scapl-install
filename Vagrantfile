@@ -5,6 +5,8 @@
 #  Don't forget to run the following commands to get the provider plugin installed !
 #  $ vagrant plugin install vagrant-vmware-workstation
 #  $ vagrant plugin license vagrant-vmware-workstation /path/to/license.lic
+#  If you want to get the VMs installed in a specific directory, type:
+#  $ export VAGRANT_VMWARE_CLONE_DIRECTORY=/path/to/your/vm/library
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -37,13 +39,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.provider :vmware_workstation do |vmware|
         vmware.vmx["name"] = "scapl-#{hostname}"
         case hostname
-        when "backbone"
+        when "backbone" # give a bit more capability to backbone (supporting RabbitMQ and the FTP server)
           vmware.vmx["memsize"] = 1024
           vmware.vmx["numvcpus"] = 2
         else
           vmware.vmx["memsize"] = 512
           vmware.vmx["numvcpus"] = 1
         end
+        vmware.vmx["usb.present"] = false # disable USB controller
       end
 
       # baseline provisioning

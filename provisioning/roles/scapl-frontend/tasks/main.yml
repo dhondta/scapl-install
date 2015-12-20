@@ -1,15 +1,7 @@
 ---
 # Install basic packages
 
-- name: Install packages
-  apt:
-    pkg: "{{item}}"
-    state: latest
-  with_items:
-    - git
-    - python-dev
-    - python-pip
-    - ftp-ssl
+- include: packages.yml
 
 # Create users and groups
 
