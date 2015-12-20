@@ -4,13 +4,13 @@
 # IMPORTANT :
 #  Don't forget to run the following commands to get the provider plugin installed !
 #  $ vagrant plugin install vagrant-vmware-workstation
-#  $ vagrant plugin license vagrant-vmware-workstation /etc/vmware/<license-file>
+#  $ vagrant plugin license vagrant-vmware-workstation /path/to/license.lic
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-#servers = ['frontend', 'search', 'automation', 'backbone', 'backend']
-servers = ['backbone']
+servers = ['frontend', 'search', 'automation', 'backbone', 'backend']
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "phusion/ubuntu-14.04-amd64"
 #  config.vm.box_url = "https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1404/versions/2.0.10/providers/vmware_desktop.box"
@@ -22,20 +22,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       case hostname
       when "backbone"
         server.vm.network :private_network, ip: "192.168.1.10"
-        #server.vm.forward_port 22, 5555 # only for development
       when "frontend"
         server.vm.network :private_network, ip: "192.168.1.20"
-        #server.vm.forward_port 22, 2222 # only for development
-        #server.vm.forward_port 80, 8000
       when "search"
         server.vm.network :private_network, ip: "192.168.1.30"
-        #server.vm.forward_port 22, 2222 # only for development
       when "automation"
         server.vm.network :private_network, ip: "192.168.1.40"
-        #server.vm.forward_port 22, 2222 # only for development
       when "backend"
         server.vm.network :private_network, ip: "192.168.1.50"
-        #server.vm.forward_port 22, 2222 # only for development
       end
 
       # customize VM
