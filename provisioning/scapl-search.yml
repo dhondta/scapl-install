@@ -1,5 +1,5 @@
 ---
-- hosts: search
+- hosts: scapl-search
   sudo: True
   roles:
 #    - baseline

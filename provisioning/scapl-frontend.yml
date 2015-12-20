@@ -1,5 +1,5 @@
 ---
-- hosts: frontend
+- hosts: scapl-frontend
   sudo: True
   roles:
 #    - baseline

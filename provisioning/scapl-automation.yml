@@ -1,5 +1,5 @@
 ---
-- hosts: automation
+- hosts: scapl-automation
   sudo: True
   roles:
 #    - baseline

@@ -1,5 +1,5 @@
 ---
-- hosts: backbone
+- hosts: scapl-backbone
   sudo: True
   roles:
 #    - baseline
