@@ -36,10 +36,8 @@ Vagrant plugin installation `vagrant-vmware-workstation` plugin is installed and
 
 3. Run Vagrant
 
- `$ export VAGRANT_VMWARE_CLONE_DIRECTORY=/path/to/your/vm/library` (If you want to specify the destination folder of the VMs)
-
  `$ cd scapl-install`
- 
+
  `$ sudo vagrant up --provider vmware_workstation`
 
 
@@ -66,8 +64,14 @@ Known problems :
 
 - An error is thrown telling that the "keyserver" attribute is not known for "apt_cache" Ansible object
 
- **Severity** High (installation crashed)
+ **Severity**: High (installation crashed)
  
- **Problem** You're probably running Ansible <1.6 ("keyserver" is an attribute added from version 1.6)
+ **Problem**: You're probably running Ansible <1.6 ("keyserver" is an attribute added from version 1.6)
  
- **Solution** Upgrade your Ansible installation
+ **Solution**: Upgrade your Ansible installation
+
+- VMs are not installed in VAGRANT_VMWARE_CLONE_DIRECTORY
+
+ **Severity**: Low (benign)
+ **Problem**: The VMs are not installed in the path specified via the environment variable VAGRANT_VMWARE_CLONE_DIRECTORY
+ **Solution**: None ; this is a bug from VMWare Workstation

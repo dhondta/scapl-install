@@ -5,8 +5,6 @@
 #  Don't forget to run the following commands to get the provider plugin installed !
 #  $ vagrant plugin install vagrant-vmware-workstation
 #  $ vagrant plugin license vagrant-vmware-workstation /path/to/license.lic
-#  If you want to get the VMs installed in a specific directory, type:
-#  $ export VAGRANT_VMWARE_CLONE_DIRECTORY=/path/to/your/vm/library
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
