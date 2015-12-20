@@ -1,0 +1,19 @@
+---
+- hosts: search
+  sudo: True
+  roles:
+#    - baseline
+    - supervisor
+    - scapl-search
+  vars:
+    # Global SCAPL-frontend configuration
+
+    # python -c 'import crypt; print crypt.crypt("Password", "$1$SomeSalt$")'
+    sysadmin_password: "$1$SomeSalt$scvwMFYVX0/NNuksR2vvw1"
+    scapl_component_name: "search"
+    scapl_component_directory: "/opt/scapl/scapl-search"
+    supervisor_apps: []
+# TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
+#      - supervisor_app_name: "search_app"
+#        supervisor_app_command: "celery worker -A search.tasks:search_app --hostname=search_app.%%h --loglevel=INFO --without-gossip --without-mingle --without-heartbeat --soft-time-limit=60 --time-limit=300"
+#        supervisor_app_user: "scapl"

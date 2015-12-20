@@ -1,0 +1,23 @@
+---
+- hosts: backend
+  sudo: True
+  roles:
+#    - baseline
+    - cassandra
+    - supervisor
+    - scapl-backend
+  vars:
+    # Global SCAPL-frontend configuration
+
+    # python -c 'import crypt; print crypt.crypt("Password", "$1$SomeSalt$")'
+    sysadmin_password: "$1$SomeSalt$scvwMFYVX0/NNuksR2vvw1"
+    scapl_component_name: "backend"
+    scapl_component_directory: "/opt/scapl/scapl-backend"
+# NO SUPERVISOR APP DEFINED FOR SCALP-BACKEND
+#    supervisor_apps:
+#      - supervisor_app_name: "first_app"
+#        supervisor_app_command: "yes"
+#        supervisor_app_user: "vagrant"
+#      - supervisor_app_name: "second_app"
+#        supervisor_app_command: "yes"
+#        supervisor_app_user: "vagrant"

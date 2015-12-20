@@ -1,0 +1,35 @@
+---
+- hosts: frontend
+  sudo: True
+  roles:
+#    - baseline
+    - mysql
+    - supervisor
+    - scapl-frontend
+  vars:
+    # Global SCAPL-frontend configuration
+
+    # python -c 'import crypt; print crypt.crypt("Password", "$1$SomeSalt$")'
+    sysadmin_password: "$1$SomeSalt$scvwMFYVX0/NNuksR2vvw1"
+    scapl_component_name: "frontend"
+    scapl_component_directory: "/opt/scapl/scapl-frontend"
+
+    # MySQL configuration
+    mysql_port: "3306"
+    mysql_root_password: "root"
+    mysql_users:
+      - name: scapl
+        host: localhost
+        password: secret
+        priv: "*.*:USAGE"
+    mysql_databases:
+      - name: scapl-db
+        collation: utf8_general_ci
+        encoding: utf8
+        replicate: 1
+
+# TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
+#    supervisor_apps:
+#      - supervisor_app_name: "frontend_app"
+#        supervisor_app_command: "celery worker -A frontend.tasks:frontend_app --hostname=frontend_app.%%h --loglevel=INFO --without-gossip --without-mingle --without-heartbeat --soft-time-limit=60 --time-limit=300"
+#        supervisor_app_user: "scapl"

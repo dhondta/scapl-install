@@ -1,0 +1,7 @@
+---
+# default lower priority variables for this role
+
+##### Rabbitmq parameters #####
+
+rabbitmq_cert: "rabbitmq.cert.pem"
+rabbitmq_key: "rabbitmq.key.pem"

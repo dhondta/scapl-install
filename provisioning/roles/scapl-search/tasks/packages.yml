@@ -1,0 +1,19 @@
+---
+# Install basic packages
+
+- name: Packages - Install Git
+  apt:
+    pkg: git
+    state: latest
+
+- name: Packages - Install Python-Pip # required for installing supervisor
+  apt:
+    pkg: python-pip
+    state: latest
+
+# Install specific packages
+
+- name: Packages - Install OpenSCAP library
+  apt:
+    pkg: libopenscap8
+    state: latest

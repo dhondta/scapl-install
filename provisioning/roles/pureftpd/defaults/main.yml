@@ -1,0 +1,11 @@
+---
+# default lower priority variables for this role
+
+##### PureFTPd parameters #####
+
+pureftpd_options:
+  CreateHomeDir: "yes"
+  PAMAuthentication: "no"
+  TLS: "2"
+  PassivePortRange: "65435 65535"
+  TLSCipherSuite: "HIGH:MEDIUM:+TLSv1.2:+TLSv1.1:+SSLv3:+TLSv1:!SSLv2"

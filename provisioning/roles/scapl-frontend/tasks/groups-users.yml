@@ -1,0 +1,35 @@
+---
+# Create users and groups
+- name: Add SCAPL Groups
+  group:
+    name: "{{ item }}"
+    state: present
+    system: yes
+  with_items:
+    - "scapl-server"
+    - "scapl-cert"
+    - "scapl"
+
+- name: Add SCAPL user
+  user:
+    name: "scapl"
+    system: yes
+    group: "scapl"
+    groups: "scapl-server"
+    createhome: no
+    state: present
+
+- name: Add sysadmin in scapl-server
+  user:
+    name: "sysadmin"
+    append: yes
+    groups: "scapl-server"
+    state: present
+
+- name: Create sysadmin in scapl-server
+  user:
+    name: "sysadmin"
+    password: "{{sysadmin_password}}"
+    append: yes
+    groups: "scapl-server"
+    state: present

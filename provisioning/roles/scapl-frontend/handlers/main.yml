@@ -1,0 +1,7 @@
+---
+# Handlers file
+
+- name: Restart supervisord
+  service:
+    name: supervisord
+    state: restarted

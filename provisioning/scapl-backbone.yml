@@ -1,0 +1,52 @@
+---
+- hosts: backbone
+  sudo: True
+  roles:
+#    - baseline
+    - rabbitmq
+    - pureftpd
+    - supervisor
+    - scapl-backbone
+  vars:
+    # Global SCAPL-frontend configuration
+
+    # python -c 'import crypt; print crypt.crypt("Password", "$1$SomeSalt$")'
+    sysadmin_password: "$1$SomeSalt$scvwMFYVX0/NNuksR2vvw1"
+
+    # RabbitMQ configuration
+    rabbitmq_vhost_definitions:
+      - name: "mq_backbone"
+      - name: "mq_frontend"
+      - name: "mq_search"
+      - name: "mq_automation"
+    rabbitmq_users_definitions:
+      - vhost: "mq_backbone"
+        user: "backbone"
+        password: "backbone" 
+      - vhost: "mq_frontend"
+        user: "frontend"
+        password: "frontend"
+      - vhost: "mq_search"
+        user: "search"
+        password: "search" 
+      - vhost: "mq_automation"
+        user: "automation"
+        password: "automation"
+    pureftpd_openssl_subj: "/C=BE/ST=Bruxelles/L=Bruxelles/O=SCAPL"
+    pureftpd_virtual_users:
+      - username: "frontend"
+        virtual_user: "ftpuser"
+        virtual_home: "/home/ftpuser/frontend"
+        password: "frontend" 
+      - username: "automation"
+        virtual_user: "ftpuser"
+        virtual_home: "/home/ftpuser"
+        password: "automation"
+# NO APP DEFINED FOR SCALP-BACKBONE
+#    supervisor_apps:
+#      - supervisor_app_name: "first_app"
+#        supervisor_app_command: "yes"
+#        supervisor_app_user: "vagrant"
+#      - supervisor_app_name: "second_app"
+#        supervisor_app_command: "yes"
+#        supervisor_app_user: "vagrant"

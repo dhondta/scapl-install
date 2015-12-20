@@ -1,0 +1,10 @@
+---
+# default lower priority variables for this role
+
+##### Component parameters #####
+
+scapl_component_name: backbone
+scapl_component_short_name: backbone
+scapl_component_directory: "{{ scapl_root }}/scapl-{{ scapl_component_name }}" # used by Supervisor
+scapl_component_ipaddr: "{{ backbone_server }}"
+

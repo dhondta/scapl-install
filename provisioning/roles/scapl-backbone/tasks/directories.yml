@@ -1,0 +1,40 @@
+---
+# Create and configure directories
+
+- name: Add www-data in scapl-server and scapl-cert
+  user:
+    name: "www-data"
+    append: yes
+    groups: "scapl-server,scapl-cert"
+
+- name: Create SCAPL data directory
+  file:
+    path: "{{ scapl_var }}"
+    owner: "scapl"
+    group: "scapl"
+    mode: 0755
+    state: directory
+
+- name: Create SCAPL log directory
+  file:
+    path: "{{ scapl_log }}"
+    owner: "scapl"
+    group: "scapl"
+    mode: 0755
+    state: directory
+
+- name: Create SCAPL application directories
+  file:
+    path: "{{ scapl_root }}"
+    owner: "sysadmin"
+    group: "scapl-server"
+    mode: 02770
+    state: directory
+
+- name: Create SCAPL component project directory
+  file:
+    path: "{{ scapl_component_directory }}"
+    owner: "sysadmin"
+    group: "scapl-server"
+    mode: 02750
+    state: directory

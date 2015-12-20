@@ -1,0 +1,7 @@
+---
+# handlers file for Pure-FTPD
+- name: Restart Pure-FTPD daemon
+  service: 
+    name: pure-ftpd 
+    state: restarted
+    enabled: yes

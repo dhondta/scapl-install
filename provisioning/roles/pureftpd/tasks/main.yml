@@ -1,0 +1,119 @@
+---
+
+- name: Pure-FTPD | Install 
+  apt: 
+    pkg: "pure-ftpd" 
+    state: present
+
+- name: Pure-FTPD | Check for --tlsciphersuite option
+  shell: "pure-ftpd -h"
+  register: pureftpd_switches
+
+- name: Pure-FTPD | Patch the wrapper if needed
+  lineinfile:
+    dest: "/usr/sbin/pure-ftpd-wrapper"
+    line: "\t\t\t'TLSCipherSuite' => ['-J %s', \\&parse_string],"
+    insertafter: "'TLS' =>"
+    regexp: "'TLSCipherSuite' =>"
+    state: present
+  when: pureftpd_switches.stdout.find('tlsciphersuite') != -1
+ 
+- name: Pure-FTPD | Add file with content in /etc/pure-ftpd/conf/ directory
+  template:
+    src: pureftpd_conf.j2
+    dest: "/etc/pure-ftpd/conf/{{ item.key }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_dict: pureftpd_options
+  when: item.key != 'TLSCipherSuite' or pureftpd_switches.stdout.find('tlsciphersuite') != -1
+
+- name: Pure-FTPD | Ensure Pure-FTPD is started
+  service: 
+    name: pure-ftpd 
+    state: restarted
+    
+- name: Pure-FTPD | Create group ftpgroup
+  group:
+    name: ftpgroup
+    state: present
+
+- name: Pure-FTPD | Add ftpuser to group ftpgroup
+  user:
+    name: ftpuser
+    group: ftpgroup
+    shell: /usr/sbin/nologin
+    home: /dev/null
+
+- name: Pure-FTPD | Link configuration for auth
+  file:
+    src: /etc/pure-ftpd/conf/PureDB
+    dest: /etc/pure-ftpd/auth/50puredb
+    state: link
+    owner: root
+    group: root
+
+- name: Pure-FTPD | Create SSL's private dir
+  file:
+    path: /etc/ssl/private
+    state: directory
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Pure-FTPD | Generate certificate
+  command: "openssl req -x509 -nodes -days 7300 -subj {{ pureftpd_openssl_subj }} -newkey rsa:4096 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem"
+  args:
+    creates: /etc/ssl/private/pure-ftpd.pem
+
+- name: Pure-FTPD | Fix permissions on key file
+  file:
+    path: /etc/ssl/private/pure-ftpd.pem
+    state: file
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Pure-FTPD | Create temporary work dir
+  file:
+    path: "/opt/pureftpd/"
+    state: directory
+
+- name: Pure-FTPD | Lookup created virtual users
+  command: "pure-pw show {{ item.username }}"
+  with_items: pureftpd_virtual_users
+  register: pure_ftpd_users_status
+  ignore_errors: True
+
+- name: Pure-FTPD | Add virtual users
+  template:
+    src: pure-ftpd.pwd
+    dest: "/opt/pureftpd/{{ item.item.username }}.pwd"
+    owner: root
+    group: root
+    mode: 0600
+  when: item.rc != 0
+  with_items: pure_ftpd_users_status.results
+  register: pure_ftpd_users
+
+- shell: "pure-pw useradd {{ item.username }} -u {{ item.virtual_user }} -d {{ item.virtual_home }} -m < /opt/pureftpd/{{ item.username }}.pwd"
+  with_items: pureftpd_virtual_users
+  when: pure_ftpd_users | changed
+
+- name: Pure-FTPD | Update user database
+  command: pure-pw mkdb
+  when: pure_ftpd_users | changed
+  notify: Restart Pure-FTPD daemon
+
+- name: Pure-FTPD | Remove temporary work dir
+  file:
+    path: "/opt/pureftpd/"
+    state: absent
+
+
+
+
+
+
+
+
