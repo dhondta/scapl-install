@@ -1,15 +1,20 @@
 ---
 
-- name: Cassandra | Add JVM repository 
-  apt_repository: 
+- name: Cassandra | Install Python dependencies
+  apt: name={{item}} state=latest
+  with_items:
+    - python-pycurl
+
+- name: Cassandra | Add JVM repository
+  apt_repository:
     repo: 'ppa:webupd8team/java'
 
-- name: Accept Java 8 Licence
+- name: Cassandra | Accept Java 8 Licence
   shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | tee /etc/oracle-java-8-licence-acceptance | /usr/bin/debconf-set-selections
   args:
     creates: /etc/oracle-java-8-licence-acceptance
 
-- name: Install Oracle Java 8
+- name: Cassandra | Install Oracle Java 8
   apt: name={{item}} state=latest
   with_items:
     - oracle-java8-installer
@@ -17,15 +22,15 @@
     - oracle-java8-set-default
 
 - name: Cassandra | Add Cassandra source
-  copy: 
+  copy:
     src: "{{item}}"
     dest: /etc/apt/sources.list.d/{{item}}
-    mode: 644 
+    mode: 644
   with_items:
     - cassandra.sources.list
 
-- name: APT keys for Cassandra
-  apt_key: 
+- name: Cassandra | APT keys
+  apt_key:
     keyserver: hkp://pgp.mit.edu:80
     id: "{{item}}"
   with_items:
@@ -34,6 +39,6 @@
     - 0353B12C
 
 - name: Cassandra | Install Cassandra
-  apt: 
+  apt:
     name: cassandra
     update_cache: yes
