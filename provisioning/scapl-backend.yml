@@ -13,6 +13,10 @@
     sysadmin_password: "$1$SomeSalt$scvwMFYVX0/NNuksR2vvw1"
     scapl_component_name: "backend"
     scapl_component_directory: "/opt/scapl/scapl-backend"
+    ufw_rules:
+      - { "src": "{{ search_server }}", "port": 9042 } # default port for Cassandra client
+      - { "src": "{{ automation_server }}", "port": 9042 } # default port for Cassandra client
+
 # NO SUPERVISOR APP DEFINED FOR SCALP-BACKEND
 #    supervisor_apps:
 #      - supervisor_app_name: "first_app"

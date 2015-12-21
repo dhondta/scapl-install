@@ -16,13 +16,13 @@
                 state=present
     notify: Restart sysctl
 # 7.1.2 Disable Send Packet Redirects
-  - name: Network - Disable Send Packet Redirects
+  - name: Network - Disable Send Packet Redirects (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.all.send_redirects'
                 line='net.ipv4.conf.all.send_redirects = 0'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable Send Packet Redirects
+  - name: Network - Disable Send Packet Redirects (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.default.send_redirects'
                 line='net.ipv4.conf.default.send_redirects = 0'
@@ -30,52 +30,52 @@
     notify: Restart sysctl
 # 7.2 Modify Network Parameters (Host and Router)
 # 7.2.1 Disable Source Routed Packet Acceptance
-  - name: Network - Disable Source Routed Packet Acceptance
+  - name: Network - Disable Source Routed Packet Acceptance (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.all.accept_source_route'
                 line='net.ipv4.conf.all.accept_source_route = 0'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable Source Routed Packet Acceptance
+  - name: Network - Disable Source Routed Packet Acceptance (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.default.accept_source_route'
                 line='net.ipv4.conf.default.accept_source_route = 0'
                 state=present
     notify: Restart sysctl
 # 7.2.2 Disable ICMP Redirect Acceptance
-  - name: Network - Disable ICMP Redirect Acceptance
+  - name: Network - Disable ICMP Redirect Acceptance (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.all.accept_redirects'
                 line='net.ipv4.conf.all.accept_redirects = 0'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable ICMP Redirect Acceptance
+  - name: Network - Disable ICMP Redirect Acceptance (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.default.accept_redirects'
                 line='net.ipv4.conf.default.accept_redirects = 0'
                 state=present
     notify: Restart sysctl
 # 7.2.3 Disable Secure ICMP Redirect Acceptance
-  - name: Network - Disable Secure ICMP Redirect Acceptance
+  - name: Network - Disable Secure ICMP Redirect Acceptance (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.all.secure_redirects'
                 line='net.ipv4.conf.all.secure_redirects = 0'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable Secure ICMP Redirect Acceptance
+  - name: Network - Disable Secure ICMP Redirect Acceptance (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.default.secure_redirects'
                 line='net.ipv4.conf.default.secure_redirects = 0'
                 state=present
     notify: Restart sysctl
 # 7.2.4 Log Suspicious Packets
-  - name: Network - Log Suspicious Packets
+  - name: Network - Log Suspicious Packets (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.all.log_martians'
                 line='net.ipv4.conf.all.log_martians = 1'
                 state=present
     notify: Restart sysctl
-  - name: Network - Log Suspicious Packets
+  - name: Network - Log Suspicious Packets (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.default.log_martians'
                 line='net.ipv4.conf.default.log_martians = 1'
@@ -96,13 +96,13 @@
                 state=present
     notify: Restart sysctl
 # 7.2.7 Enable RFC-recommended Source Route Validation
-  - name: Network - Enable RFC-recommended Source Route Validation
+  - name: Network - Enable RFC-recommended Source Route Validation (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.all.rp_filter'
                 line='net.ipv4.conf.all.rp_filter = 1'
                 state=present
     notify: Restart sysctl
-  - name: Network - Enable RFC-recommended Source Route Validation
+  - name: Network - Enable RFC-recommended Source Route Validation (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv4.conf.default.rp_filter'
                 line='net.ipv4.conf.default.rp_filter = 1'
@@ -117,39 +117,39 @@
     notify: Restart sysctl
 # 7.3 Configure IPv6
 # 7.3.1 Disable IPv6 Router Advertisements
-  - name: Network - Disable IPv6 Router Advertisements
+  - name: Network - Disable IPv6 Router Advertisements (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv6.conf.all.accept_ra'
                 line='net.ipv6.conf.all.accept_ra = 0'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable IPv6 Router Advertisements
+  - name: Network - Disable IPv6 Router Advertisements (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv6.conf.default.accept_ra'
                 line='net.ipv6.conf.default.accept_ra = 0'
                 state=present
     notify: Restart sysctl
 # 7.3.2 Disable IPv6 Redirect Acceptance
-  - name: Network - Disable IPv6 Redirect Acceptance
+  - name: Network - Disable IPv6 Redirect Acceptance (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv6.conf.all.accept_redirects'
                 line='net.ipv6.conf.all.accept_redirects = 0'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable IPv6 Redirect Acceptance
+  - name: Network - Disable IPv6 Redirect Acceptance (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv6.conf.default.accept_redirects'
                 line='net.ipv6.conf.default.accept_redirects = 0'
                 state=present
     notify: Restart sysctl
 # 7.3.3 Disable IPv6
-  - name: Network - Disable IPv6
+  - name: Network - Disable IPv6 (all)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv6.conf.all.disable_ipv6'
                 line='net.ipv6.conf.all.disable_ipv6 = 1'
                 state=present
     notify: Restart sysctl
-  - name: Network - Disable IPv6
+  - name: Network - Disable IPv6 (default)
     lineinfile: dest=/etc/sysctl.conf
                 regexp='net.ipv6.conf.default.disable_ipv6'
                 line='net.ipv6.conf.default.disable_ipv6 = 1'
@@ -170,6 +170,8 @@
   - name: Network - tcpwrapper installed
     apt: pkg=tcpd state=present
 # 7.4.2 Create /etc/hosts.allow
+  - name: Network - hosts.allow exists and is strict
+    lineinfile: "dest=/etc/hosts.allow regexp='ALL:' line='ALL: {{ physical_host }}' state=present create=yes"
 # 7.4.3 Verify Permissions on /etc/hosts.allow
   - name: Network - hosts.allow has correct permissions
     file: dest=/etc/hosts.allow
@@ -210,7 +212,7 @@
 # 7.7 Ensure Firewall is active
   - name: Network - Firewall is installed
     apt: pkg=ufw state=present
-  - name: Network - Firewall is enabled at boot - ufw conf
+  - name: Network - Firewall is enabled at boot (ufw.conf)
     lineinfile: dest=/etc/ufw/ufw.conf
                 regexp='^ENABLED'
                 line='ENABLED=yes'
@@ -240,3 +242,8 @@
                 line='DEFAULT_APPLICATION_POLICY="SKIP"'
                 state=present
     notify: Restart ufw
+  - name: Network - Firewall allow SSH
+    command: "{{ item }}"
+    with_items:
+      - ufw allow OpenSSH
+      - ufw allow ssh

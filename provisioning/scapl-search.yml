@@ -13,6 +13,9 @@
     scapl_component_name: "search"
     scapl_component_directory: "/opt/scapl/scapl-search"
     supervisor_apps: []
+    ufw_rules:
+      - { "src": "{{ backbone_server }}", "port": "amqp" }
+
 # TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
 #      - supervisor_app_name: "search_app"
 #        supervisor_app_command: "celery worker -A search.tasks:search_app --hostname=search_app.%%h --loglevel=INFO --without-gossip --without-mingle --without-heartbeat --soft-time-limit=60 --time-limit=300"

@@ -1,3 +1,6 @@
+physical_host: 192.168.158.1 # on the virtual management network (not on the VMs' private network)
+
+gateway: 192.168.1.1
 backbone_server: 192.168.1.10
 frontend_server: 192.168.1.20
 search_server: 192.168.1.30

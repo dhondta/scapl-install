@@ -11,6 +11,11 @@
 # Install SCAPL component
 - include: scapl-component.yml
 
+# Configure ufw rules
+- name: Configure ufw rules
+  ufw: rule=allow src={{ item.src }} port={{ item.port }}
+  with_items: ufw_rules
+
 # Create applications in supervisor
 # TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
 #- name: Create apps in Supervisor

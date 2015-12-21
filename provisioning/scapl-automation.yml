@@ -12,6 +12,9 @@
     sysadmin_password: "$1$SomeSalt$scvwMFYVX0/NNuksR2vvw1"
     scapl_component_name: "automation"
     scapl_component_directory: "/opt/scapl/scapl-automation"
+    ufw_rules:
+      - { "src": "{{ backbone_server }}", "port": "amqp" }
+
 # TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
 #    supervisor_apps:
 #      - supervisor_app_name: "automation_app"
