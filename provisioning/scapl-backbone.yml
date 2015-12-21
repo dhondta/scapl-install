@@ -43,12 +43,12 @@
         virtual_home: "/home/ftpuser"
         password: "automation"
     ufw_rules:
-      - { "src": "{{ frontend_server }}", "port": "amqp" }
-      - { "src": "{{ search_server }}", "port": "amqp" }
-      - { "src": "{{ automation_server }}", "port": "amqp" }
-      - { "src": "{{ frontend_server }}", "port": "ftp" }
-      - { "src": "{{ automation_server }}", "port": "ftp" }
-      - { "src": "{{ backend_server }}", "port": "ftp" }
+      - { src: "{{ frontend_server }}", port: "amqp" }
+      - { src: "{{ search_server }}", port: "amqp" }
+      - { src: "{{ automation_server }}", port: "amqp" }
+      - { src: "{{ frontend_server }}", port: "ftp" }
+      - { src: "{{ automation_server }}", port: "ftp" }
+      - { src: "{{ backend_server }}", port: "ftp" }
 
 # NO APP DEFINED FOR SCALP-BACKBONE
 #    supervisor_apps:

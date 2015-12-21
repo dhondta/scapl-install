@@ -14,7 +14,7 @@
     scapl_component_directory: "/opt/scapl/scapl-search"
     supervisor_apps: []
     ufw_rules:
-      - { "src": "{{ backbone_server }}", "port": "amqp" }
+      - { src: "{{ backbone_server }}", port: "amqp" }
 
 # TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
 #      - supervisor_app_name: "search_app"

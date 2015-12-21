@@ -28,9 +28,9 @@
         encoding: utf8
         replicate: 1
     ufw_rules:
-      - { "src": "{{ gateway }}", "port": 8080 }
-      - { "src": "127.0.0.1", "port": "mysql" }
-      - { "src": "{{ backbone_server }}", "port": "amqp" }
+      - { src: "{{ gateway }}", port: 8080 }
+      - { src: "127.0.0.1", port: "mysql" }
+      - { src: "{{ backbone_server }}", port: "amqp" }
 
 # TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
 #    supervisor_apps:

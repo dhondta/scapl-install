@@ -13,7 +13,7 @@
     scapl_component_name: "automation"
     scapl_component_directory: "/opt/scapl/scapl-automation"
     ufw_rules:
-      - { "src": "{{ backbone_server }}", "port": "amqp" }
+      - { src: "{{ backbone_server }}", port: "amqp" }
 
 # TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
 #    supervisor_apps:
