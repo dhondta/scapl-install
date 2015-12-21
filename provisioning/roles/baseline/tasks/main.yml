@@ -14,7 +14,7 @@
     - echo "LANG=\"en_US.UTF-8\"" > /etc/default/locale
 
 # Keyboard layout
-  - name: Configure keyboard layout
+  - name: Set keyboard layout to 'be'
     lineinfile:
       dest: /etc/default/keyboard
       regexp: "{{ item.regexp }}"
@@ -24,6 +24,7 @@
     with_items:
       - { regexp: 'XKBMODEL=', line: 'XKBMODEL=\"pc105\"' }
       - { regexp: 'XKBLAYOUT=', line: 'XKBLAYOUT=\"be\"' }
+    notify: Restart system
 
 # Apt
   - name: Update APT package cache
@@ -72,4 +73,4 @@
     lineinfile: dest=/etc/sudoers
                 regexp='Cmnd_Alias SUI=/bin/su'
                 line='Cmnd_Alias SUI=/bin/su'
-                state=present  
+                state=present

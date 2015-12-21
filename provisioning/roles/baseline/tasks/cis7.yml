@@ -243,7 +243,7 @@
                 state=present
     notify: Restart ufw
   - name: Network - Firewall allow SSH
-    command: "{{ item }}"
+    shell: ufw allow {{ item }}
     with_items:
-      - ufw allow OpenSSH
-      - ufw allow ssh
+      - OpenSSH
+      - ssh
