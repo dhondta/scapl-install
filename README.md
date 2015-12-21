@@ -36,10 +36,7 @@ Vagrant plugin installation `vagrant-vmware-workstation` plugin is installed and
 
 3. Run Vagrant
 
- If you want to specify the destination folder of the VMs :
- 
- `$ export VAGRANT_VMWARE_CLONE_DIRECTORY=/path/to/your/vm/library`
-
+ `$ export VAGRANT_VMWARE_CLONE_DIRECTORY=/path/to/your/vm/library` (If you want to specify the destination folder of the VMs)
 
  `$ cd scapl-install`
  
