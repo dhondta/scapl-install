@@ -170,8 +170,6 @@
   - name: Network - tcpwrapper installed
     apt: pkg=tcpd state=present
 # 7.4.2 Create /etc/hosts.allow
-  - name: Network - hosts.allow exists and allows local subnet access
-    lineinfile: "dest=/etc/hosts.allow regexp='ALL: 10' line='ALL: {{mgmt_subnet}}' state=present create=yes"
 # 7.4.3 Verify Permissions on /etc/hosts.allow
   - name: Network - hosts.allow has correct permissions
     file: dest=/etc/hosts.allow
