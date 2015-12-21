@@ -54,14 +54,12 @@
                 regexp='inet_interfaces'
                 line='inet_interfaces = localhost'
                 state=present
-    when: smtp_type == "client"
     notify: Restart postfix
   - name: Special Services - SMTP hardening - mynetwork
     lineinfile: dest=/etc/postfix/main.cf
                 regexp='^mynetworks'
                 line='mynetworks = 127.0.0.0/8'
                 state=present
-    when: smtp_type == "client"
 # 6.17 Ensure Biosdevname is enabled
   - name: Special Services - Biosdevname is enabled
     apt: pkg=biosdevname state=latest
