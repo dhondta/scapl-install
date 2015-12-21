@@ -40,15 +40,13 @@ Vagrant plugin installation `vagrant-vmware-workstation` plugin is installed and
 
  If you want to install VMs to a specified path:
 
-<<<<<<< HEAD
    `$ mkdir .vagrant && cd .vagrant`
 
    `$ sudo ln -s /path/to/vm/library machines && cd ..`
-=======
+
   `$ mkdir .vagrant && cd .vagrant`
 
   `$ sudo ln -s /path/to/vm/library machines && cd ..`
->>>>>>> DEV environment deployment (v1.1) - correction (6)
 
  `$ sudo vagrant up --provider vmware_workstation`
 
