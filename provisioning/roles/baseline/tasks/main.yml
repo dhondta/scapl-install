@@ -17,8 +17,8 @@
   - name: Configure keyboard layout
     lineinfile: "{{ item }}"
     with_items:
-    - "dest=/etc/default/keyboard regexp='XKBMODEL=' line='XKBMODEL="pc105"' state=present create=yes"
-    - "dest=/etc/default/keyboard regexp='XKBLAYOUT=' line='XKBLAYOUT="be"' state=present create=yes"
+    - "dest=/etc/default/keyboard regexp='XKBMODEL=' line='XKBMODEL=\"pc105\"' state=present create=yes"
+    - "dest=/etc/default/keyboard regexp='XKBLAYOUT=' line='XKBLAYOUT=\"be\"' state=present create=yes"
 
 # Apt
   - name: Update APT package cache
