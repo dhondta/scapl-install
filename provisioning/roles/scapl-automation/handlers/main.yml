@@ -1,6 +1,8 @@
 ---
 # Handlers file
 
+- name: Restart ufw
+  command: ufw reload
 - name: Restart supervisord
   service:
     name: supervisord
