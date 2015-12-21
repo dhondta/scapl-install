@@ -38,6 +38,12 @@ Vagrant plugin installation `vagrant-vmware-workstation` plugin is installed and
 
  `$ cd scapl-install`
 
+ If you want to install VMs to a specified path:
+
+  `$ mkdir .vagrant && cd .vagrant`
+
+  `$ sudo ln -s /path/to/vm/library machines && cd ..`
+
  `$ sudo vagrant up --provider vmware_workstation`
 
 
