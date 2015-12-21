@@ -15,10 +15,15 @@
 
 # Keyboard layout
   - name: Configure keyboard layout
-    lineinfile: "{{ item }}"
+    lineinfile:
+      dest: /etc/default/keyboard
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      state: present
+      create: yes
     with_items:
-    - "dest=/etc/default/keyboard regexp='XKBMODEL=' line='XKBMODEL=\"pc105\"' state=present create=yes"
-    - "dest=/etc/default/keyboard regexp='XKBLAYOUT=' line='XKBLAYOUT=\"be\"' state=present create=yes"
+      - { regexp: 'XKBMODEL=', line: 'XKBMODEL=\"pc105\"' }
+      - { regexp: 'XKBLAYOUT=', line: 'XKBLAYOUT=\"be\"' }
 
 # Apt
   - name: Update APT package cache
