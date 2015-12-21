@@ -212,38 +212,34 @@
 # 7.7 Ensure Firewall is active
   - name: Network - Firewall is installed
     apt: pkg=ufw state=present
+  - name: Network - Firewall DEFAULT_INPUT_POLICY
+    lineinfile: dest=/etc/default/ufw
+                regexp='^DEFAULT_INPUT_POLICY'
+                line='DEFAULT_INPUT_POLICY="DROP"'
+                state=present
+  - name: Network - Firewall DEFAULT_OUTPUT_POLICY
+    lineinfile: dest=/etc/default/ufw
+                regexp='^DEFAULT_OUTPUT_POLICY'
+                line='DEFAULT_OUTPUT_POLICY="ACCEPT"'
+                state=present
+  - name: Network - Firewall DEFAULT_FORWARD_POLICY
+    lineinfile: dest=/etc/default/ufw
+                regexp='^DEFAULT_FORWARD_POLICY'
+                line='DEFAULT_FORWARD_POLICY="DROP"'
+                state=present
+  - name: Network - Firewall DEFAULT_APPLICATION_POLICY
+    lineinfile: dest=/etc/default/ufw
+                regexp='^DEFAULT_APPLICATION_POLICY'
+                line='DEFAULT_APPLICATION_POLICY="SKIP"'
+                state=present
+  - name: Network - Firewall allow SSH
+    shell: ufw allow {{ item }}
+    with_items:
+      - OpenSSH
+      - ssh
   - name: Network - Firewall is enabled at boot (ufw.conf)
     lineinfile: dest=/etc/ufw/ufw.conf
                 regexp='^ENABLED'
                 line='ENABLED=yes'
                 state=present
     notify: Restart ufw
-  - name: Network - Firewall DEFAULT_INPUT_POLICY
-    lineinfile: dest=/etc/default/ufw
-                regexp='^DEFAULT_INPUT_POLICY'
-                line='DEFAULT_INPUT_POLICY="DROP"'
-                state=present
-    notify: Restart ufw
-  - name: Network - Firewall DEFAULT_OUTPUT_POLICY
-    lineinfile: dest=/etc/default/ufw
-                regexp='^DEFAULT_OUTPUT_POLICY'
-                line='DEFAULT_OUTPUT_POLICY="ACCEPT"'
-                state=present
-    notify: Restart ufw
-  - name: Network - Firewall DEFAULT_FORWARD_POLICY
-    lineinfile: dest=/etc/default/ufw
-                regexp='^DEFAULT_FORWARD_POLICY'
-                line='DEFAULT_FORWARD_POLICY="DROP"'
-                state=present
-    notify: Restart ufw
-  - name: Network - Firewall DEFAULT_APPLICATION_POLICY
-    lineinfile: dest=/etc/default/ufw
-                regexp='^DEFAULT_APPLICATION_POLICY'
-                line='DEFAULT_APPLICATION_POLICY="SKIP"'
-                state=present
-    notify: Restart ufw
-  - name: Network - Firewall allow SSH
-    shell: ufw allow {{ item }}
-    with_items:
-      - OpenSSH
-      - ssh
