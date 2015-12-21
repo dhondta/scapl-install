@@ -1,40 +1,18 @@
 ---
 # Install basic packages
-
 - include: packages.yml
 
 # Create users and groups
-
 - include: groups-users.yml
 
 # Create and configure directories
-
 - include: directories.yml
 
-####################################
-# NO APP RUNNING ON SCALP-BACKBONE #
-####################################
-#
-# Clone the git repositories
-#
-#- name: Clone SCAPL component repository
-#  git:
-#    repo: "https://github.com/dhondta/scapl-{{ scapl_component_name }}.git"
-#    dest: "{{ scapl_component_directory }}"
-#    force: yes
-#    recursive: no
-#    accept_hostkey: yes
-#  sudo: no
-#
-# Install the requirements
-#
-#- name: Install requirements
-#  pip:
-#    requirements: "{{ scapl_component_directory }}/requirements.txt"
-#
+# No SCAPL component on backbone
+
 # Create applications in supervisor
-#
-#- name: SCAPL - Backbone | Create apps in Supervisor
+# TO ACTIVATE WHEN SCAPL APPLICATION EXISTS
+#- name: Create apps in Supervisor
 #  template:
 #    src: supervisor_app
 #    dest: /etc/supervisor/conf.d/{{item.supervisor_app_name}}
