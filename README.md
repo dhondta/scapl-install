@@ -73,5 +73,7 @@ Known problems :
 - VMs are not installed in VAGRANT_VMWARE_CLONE_DIRECTORY
 
  **Severity**: Low (benign)
+ 
  **Problem**: The VMs are not installed in the path specified via the environment variable VAGRANT_VMWARE_CLONE_DIRECTORY
+ 
  **Solution**: None ; this is a bug from VMWare Workstation
