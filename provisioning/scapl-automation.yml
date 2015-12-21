@@ -2,7 +2,7 @@
 - hosts: scapl-automation
   sudo: True
   roles:
-#    - baseline
+    - baseline
     - supervisor
     - scapl-automation
   vars:

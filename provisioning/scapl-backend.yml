@@ -2,7 +2,7 @@
 - hosts: scapl-backend
   sudo: True
   roles:
-#    - baseline
+    - baseline
     - cassandra
     - supervisor
     - scapl-backend

@@ -2,7 +2,7 @@
 - hosts: scapl-frontend
   sudo: True
   roles:
-#    - baseline
+    - baseline
     - mysql
     - supervisor
     - scapl-frontend

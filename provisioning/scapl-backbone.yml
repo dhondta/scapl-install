@@ -2,7 +2,7 @@
 - hosts: scapl-backbone
   sudo: True
   roles:
-#    - baseline
+    - baseline
     - rabbitmq
     - pureftpd
     - supervisor

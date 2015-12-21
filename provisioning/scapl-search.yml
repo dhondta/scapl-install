@@ -2,7 +2,7 @@
 - hosts: scapl-search
   sudo: True
   roles:
-#    - baseline
+    - baseline
     - supervisor
     - scapl-search
   vars:
