@@ -7,11 +7,18 @@
 # Template task file, can include smaller files if warranted
 
 # Locale
-  - name: Generate Locale
-    command: locale-gen "en_US.UTF-8"
-
   - name: Configure Locale
-    command: dpkg-reconfigure locales
+    command: "{{ item }}"
+    with_items:
+    - dpkg-reconfigure locales
+    - echo "LANG=\"en_US.UTF-8\"" > /etc/default/locale
+
+# Keyboard layout
+  - name: Configure keyboard layout
+    lineinfile: "{{ item }}"
+    with_items:
+    - "dest=/etc/default/keyboard regexp='XKBMODEL=' line='XKBMODEL="pc105"' state=present create=yes"
+    - "dest=/etc/default/keyboard regexp='XKBLAYOUT=' line='XKBLAYOUT="be"' state=present create=yes"
 
 # Apt
   - name: Update APT package cache
