@@ -48,17 +48,23 @@ Known problems :
 - A warning is thrown regularly telling that "previous known host file not found"
 
  **Severity**: Low (benign)
+ 
  **Problem**: No `known_hosts` file exists
+ 
  **Solution**: `$ touch ~/.ssh/known_hosts`
 
 - An error is thrown telling that the "recursive" attribute is not known for "git" Ansible object
 
  **Severity**: High (installation crashed)
+ 
  **Problem**: You're probably running Ansible <1.6 ("recursive" is an attribute added from version 1.6)
+ 
  **Solution**: Upgrade your Ansible installation
 
 - An error is thrown telling that the "keyserver" attribute is not known for "apt_cache" Ansible object
 
  **Severity** High (installation crashed)
+ 
  **Problem** You're probably running Ansible <1.6 ("keyserver" is an attribute added from version 1.6)
+ 
  **Solution** Upgrade your Ansible installation
