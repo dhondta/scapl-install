@@ -6,12 +6,14 @@ Requirements
 
 Ansible >= 1.6
 
-Ubuntu
-^^^^^^
+**For Ubuntu**
 
  `$ sudo apt-get install software-properties-common`
+ 
  `$ sudo apt-add-repository ppa:ansible/ansible`
+ 
  `$ sudo apt-get update`
+ 
  `$ sudo apt-get install ansible`
 
 **Source**: http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-apt-ubuntu
@@ -25,6 +27,7 @@ Vagrant plugin installation `vagrant-vmware-workstation` plugin is installed and
 1. Install vagrant plugin for VMWare
 
  `$ vagrant plugin install vagrant-vmware-workstation`
+ 
  `$ vagrant plugin license vagrant-vmware-workstation /path/to/license.lic`
 
 2. Clone the Git repository
@@ -34,9 +37,12 @@ Vagrant plugin installation `vagrant-vmware-workstation` plugin is installed and
 3. Run Vagrant
 
  If you want to specify the destination folder of the VMs :
+ 
  `$ export VAGRANT_VMWARE_CLONE_DIRECTORY=/path/to/your/vm/library`
 
+
  `$ cd scapl-install`
+ 
  `$ sudo vagrant up --provider vmware_workstation`
 
 
