@@ -22,13 +22,13 @@ Ansible >= 1.6
 Default Configuration
 ---------------------
 
-===================== =============
-``scapl-backbone``    192.168.1.1
-``scapl-frontend``    192.168.1.10
-``scapl-search``      192.168.1.20
-``scapl-automation``  192.168.1.30
-``scapl-bakend``      192.168.1.40
-===================== =============
+| **VM**           | **Private Network Address** |
+|------------------|:---------------------------:|
+| scapl-backbone   |         192.168.1.10        |
+| scapl-frontend   |         192.168.1.20        |
+| scapl-search     |         192.168.1.30        |
+| scapl-automation |         192.168.1.40        |
+| scapl-backend    |         192.168.1.50        |
 
 Steps
 -----
