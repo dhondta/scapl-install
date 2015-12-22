@@ -19,6 +19,17 @@ Ansible >= 1.6
 **Source**: http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-apt-ubuntu
 
 
+Default Configuration
+---------------------
+
+===================== =============
+``scapl-backbone``    192.168.1.1
+``scapl-frontend``    192.168.1.10
+``scapl-search``      192.168.1.20
+``scapl-automation``  192.168.1.30
+``scapl-bakend``      192.168.1.40
+===================== =============
+
 Steps
 -----
 
