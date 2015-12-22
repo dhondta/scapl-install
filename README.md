@@ -35,7 +35,7 @@ The created VM's are all connected to the Vmnet8 (NAT) and to VmnetX (Private Ne
 This can be configured in :
 
 - `Vagrantfile`
-- `group_vars/all.yml`
+- `provisioning/group_vars/all.yml`
 
 Steps
 -----
