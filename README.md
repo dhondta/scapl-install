@@ -22,6 +22,8 @@ Ansible >= 1.6
 Default Configuration
 ---------------------
 
+The created VM's are all connected to the Vmnet8 (NAT) and to VmnetX (Private Network created when running Vagrant). Their addresses in the private network are the followings :
+
 | **VM**           | **Private Network Address** |
 |------------------|:---------------------------:|
 | scapl-backbone   |         192.168.1.10        |
@@ -29,6 +31,11 @@ Default Configuration
 | scapl-search     |         192.168.1.30        |
 | scapl-automation |         192.168.1.40        |
 | scapl-backend    |         192.168.1.50        |
+
+This can be configured in :
+
+- `Vagrantfile`
+- `group_vars/all.yml`
 
 Steps
 -----
