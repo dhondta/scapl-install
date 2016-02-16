@@ -18,3 +18,8 @@
   apt:
     pkg: ftp-ssl
     state: latest
+
+- name: Install GraphViz
+  apt:
+    pkg: graphviz
+    state: latest
