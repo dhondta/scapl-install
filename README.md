@@ -105,3 +105,6 @@ Known problems :
  **Problem**: The VMs are not installed in the path specified via the environment variable VAGRANT_VMWARE_CLONE_DIRECTORY
 
  **Solution**: This is a known bug from VMWare Workstation ; use a symbolic link instead
+
+
+Copyright (C) 2015-2017 Alexandre D'Hondt, Hussein Bahmad
